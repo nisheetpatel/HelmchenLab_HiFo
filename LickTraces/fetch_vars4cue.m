@@ -18,7 +18,7 @@
 vars_before = who;
 
 %% Changing to directory with the TXT and TDMS files
-cd behavior/
+% cd behavior/          Not needed
 
 %% Fetching name of the txt file
 currentDir = dir(pwd);
@@ -88,7 +88,7 @@ for i = 1:a
     elseif strcmp(Event(i),'End Trial')
         trial.begin     = calc_time(stimulus_time, start_time);
         trial.stimulus  = calc_time(delay_time, stimulus_time); 
-        trial.delay     = calc_time(report_time, delay_time);
+        trial.delay     = calc_time(report_time, delay_time);   % If there is no delay, change this to (report_time - stimulus_time)
         id = id + 1;
         if (trial.delay<0)
             try 
@@ -107,7 +107,7 @@ for i = 1:a
 end
 
 %% Back to parent directory
-cd ..
+% cd ..         Not needed
 
 %% Deleting unwanted variables created by the script
 vars_after  = [];

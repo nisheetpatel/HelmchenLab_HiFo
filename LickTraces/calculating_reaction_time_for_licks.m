@@ -26,7 +26,7 @@ for k=1:length(masterMat)
     for jj=1:length(index)
         if index(jj)/100 > cues(k) % TimeOfCueInSeconds
             reactionTime_licks_all(k) = index(jj)/100 - cues(k);
-            break     % Records the first instance when index(jj) > cues(k)
+            break     % Records the first instance when threshold exceeds after cues(k)
         end
     end
     if strfind(masterMat(k).decision,'Go') == 1

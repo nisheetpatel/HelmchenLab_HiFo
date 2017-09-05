@@ -40,7 +40,7 @@ function lick_traces_reactime(thresh)
                         % Note: cues is in absolute time (not subtracting baseline)
     
     %% Lick traces for all conditions (hit, miss, early, nogo...)
-    licking_traces_per_condition(licks, masterMat, cues, bot_thresh, top_thresh);
+    licking_traces_conditional(licks, masterMat, cues, bot_thresh, top_thresh);
     
     %% Calculate reaction time for licks relative to the time of cue
     calculating_reaction_time_for_licks;

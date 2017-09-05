@@ -12,7 +12,7 @@
 % have a behavior folder containing the TDMS files. This organization of 
 % code has been adapted to Ariel Gilad's data. Please either organize your
 % data in a similar manner or create another version of this function and
-% change the directory name from 'behavior/' to the one that contains your
+% change the directory name from pwd to the one that contains your
 % TDMS files.
 %% 
 function licks = import_lick_data()
@@ -21,7 +21,7 @@ function licks = import_lick_data()
 sample_rate = 100;    %in Hz
 
 % begin 
-directory = 'behavior/';
+directory = pwd;
 ca = dir(directory);
 ca = struct2cell(ca);
 ca = ca(1,:);
@@ -38,11 +38,13 @@ for i = 1:a
     elseif findstr('index', ca{i}) > 1
     elseif findstr('txt', ca{i}) > 1
     elseif findstr('mat', ca{i}) > 1
+    elseif findstr('png', ca{i}) > 1
+    elseif findstr('pdf', ca{i}) > 1
     else
         
         ca_char = ca{i}
         % generate lick data from 2 channel data
-        lick_tdms = TDMS_getStruct(['behavior/' ca_char]);
+        lick_tdms = TDMS_getStruct(['' ca_char]);
         pre_lick = lick_tdms.Untitled.Untitled.data;
         pre_lick(:,2:2:end) = [];    %odd columns only
         time_lick = [];
@@ -64,7 +66,7 @@ else
       licks_new = licks; 
       load('licks.mat')
       save('licks_old.mat','licks');
-      licks = licks_new; %#ok<NASGU>
+      licks = licks_new; 
       save('licks.mat','licks')
 end
 
