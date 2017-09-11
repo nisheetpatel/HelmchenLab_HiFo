@@ -29,9 +29,9 @@ for k=1:length(masterMat)
             break     % Records the first instance when threshold exceeds after cues(k)
         end
     end
-    if strfind(masterMat(k).decision,'Go') == 1
+    if strcmp(masterMat(k).decision,'Go') == 1
         reactionTime_licks_go(k) = reactionTime_licks_all(k);
-    elseif strfind(masterMat(k).decision,'No Go') == 1
+    elseif strcmp(masterMat(k).decision,'No Go') == 1
         reactionTime_licks_nogo(k) = reactionTime_licks_all(k);
     end
 end

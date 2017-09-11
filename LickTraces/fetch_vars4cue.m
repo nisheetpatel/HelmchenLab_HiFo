@@ -1,3 +1,4 @@
+
 %% Fetching presentation, stimulus and delay time from txt log file
 % Author: Unknown (adapted and commented by Nisheet)
 
@@ -44,11 +45,10 @@ trials = [];
 for i = 1:a
     % Beginning of the trial
     if strcmp(Event(i),'Begin Trial / Recording') 
-        trial.id = id;
-        trial.no = Trial(i);
-        %trial.begin = [];
-        %trial.stimulus = [];
-        %trial.delay = [];
+        trial.id        = id;
+        trial.no        = Trial(i);
+        trial.texture   = '';       % initializing for trial
+        trial.decision  = '';       % initializing for trial
         time = Time{i};
         start_time = get_time(time);
 
